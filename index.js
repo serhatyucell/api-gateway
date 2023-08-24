@@ -1,7 +1,14 @@
 const express = require("express");
 const app = express();
+const Policy = require("./Policy.js");
+
+const APILIST = {
+	"/serhat": {},
+};
 
 app.use("*", function (req, res, next) {
+	req.headers.proxyRequestTime = Date.now();
+	req.headers.requestId = "aaaaa";
 	req.headers.serhat = "yücel";
 	next();
 });
